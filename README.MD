@@ -1,4 +1,4 @@
-# 🤖 whatsapp_ai_bot
+# 🤖 Whatsapp_ai_bot
 
 Um chatbot inteligente para WhatsApp que utiliza **OpenAI**, **FastAPI**, **LangChain** e **EvolutionAPI**, com arquitetura pronta para produção via **Docker**!  
 Ideal para criar assistentes automatizados, bots de atendimento, ou integração RAG (busca por documentos).
