@@ -1,109 +1,99 @@
 # 🤖 Whatsapp_ai_bot
 
-Um chatbot inteligente para WhatsApp que utiliza **OpenAI**, **FastAPI**, **LangChain** e **EvolutionAPI**, com arquitetura pronta para produção via **Docker**!  
-Ideal para criar assistentes automatizados, bots de atendimento, ou integração RAG (busca por documentos).
+An intelligent WhatsApp chatbot powered by **OpenAI**, **FastAPI**, **LangChain**, and **EvolutionAPI**—designed with a production-ready architecture using **Docker**!  
+Perfect for building automated assistants, customer support bots, or implementing RAG (Retrieval-Augmented Generation) with your documents.
+
+![Project Screenshot](images/Whatsapp_bot.png)
+---
+
+## ✨ Features
+
+- 🤖 Automatically responds to WhatsApp messages using AI (OpenAI)
+- 📚 RAG support: retrieve answers from your own documents
+- 🔗 Seamless integration with EvolutionAPI (WhatsApp gateway)
+- ⚡ Fast, buffered responses with smart debouncing
+- 🧠 Customizable prompts to fine-tune the bot’s behavior
+- 🐳 Easy deployment with Docker/Docker Compose
 
 ---
 
-## ✨ Funcionalidades
+## 🚀 Getting Started
 
-- 🤖 Responde automaticamente mensagens do WhatsApp com IA (OpenAI)
-- 📚 Suporte a RAG: busque respostas em seus próprios documentos
-- 🔗 Integração pronta com EvolutionAPI (WhatsApp gateway)
-- ⚡ Respostas rápidas e bufferizadas (debounce inteligente)
-- 🧠 Personalização de prompts para adaptar o comportamento do bot
-- 🐳 Deploy facilitado via Docker/Docker Compose
-
----
-
-## 🚀 Como rodar o projeto
-
-### 1. Clone o repositório
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/yagosamu/whatsapp_ai_bot
 cd whatsapp_ai_bot
 ```
 
-### 2. Configure suas variáveis de ambiente
+### 2. Configure your environment variables
 
-Copie o arquivo de exemplo e edite conforme necessário:
+Copy the example env file and edit as needed:
 
 ```bash
 cp .env.example .env
 ```
 
-Preencha as variáveis no `.env`:
+Fill in the variables in `.env`:
 
-- `OPENAI_API_KEY`: sua chave da OpenAI
-- `AUTHENTICATION_API_KEY`: chave da EvolutionAPI
-- `EVOLUTION_INSTANCE_NAME`: nome da instância no EvolutionAPI (deve ser igual ao painel)
-- `AI_CONTEXTUALIZE_PROMPT`, `AI_SYSTEM_PROMPT`: personalize os prompts do seu bot
-- Outras variáveis para Redis, etc.
+- `OPENAI_API_KEY`: your OpenAI API key
+- `AUTHENTICATION_API_KEY`: your EvolutionAPI key
+- `EVOLUTION_INSTANCE_NAME`: your instance name in EvolutionAPI (must match the dashboard)
+- `AI_CONTEXTUALIZE_PROMPT`, `AI_SYSTEM_PROMPT`: customize your bot’s prompts
+- Other variables for Redis, etc.
 
-### 3. (Opcional) Adicione documentos para RAG
+### 3. (Optional) Add documents for RAG
 
-Coloque arquivos (PDF, TXT, etc.) na pasta `rag_files/`.  
-Eles serão lidos e indexados automaticamente para respostas baseadas em documentos.
+Place files (PDF, TXT, etc.) in the `rag_files/` folder.  
+They will be automatically read and indexed for document-based answers.
 
-### 4. Suba os containers
+### 4. Start the containers
 
 ```bash
 docker compose up --build
 ```
 
-Acesse o painel EvolutionAPI em [http://localhost:8080/manager](http://localhost:8080/manager).
+Access the EvolutionAPI dashboard at [http://localhost:8080/manager](http://localhost:8080/manager).
 
-### 5. Configure o webhook no EvolutionAPI
+### 5. Set up the webhook in EvolutionAPI
 
-- Conecte sua instância do WhatsApp no painel
-- Adicione o webhook:  
+- Connect your WhatsApp instance in the dashboard
+- Add the webhook:  
   ```
   http://bot:8000/webhook
   ```
-- Habilite o evento `MESSAGES_UPSERT`
+- Enable the `MESSAGES_UPSERT` event
 
 ---
 
-## 🛠️ Estrutura do projeto
+## 🛠️ Project Structure
 
 ```
-├── app.py                # Endpoint FastAPI do webhook
-├── evolution_api.py      # Função para enviar mensagens via EvolutionAPI
-├── chains.py             # Lógica do agent (OpenAI/LangChain)
-├── message_buffer.py     # Bufferização e debounce das mensagens
-├── prompts.py            # Prompts customizáveis
-├── config.py             # Carrega variáveis do .env
+├── app.py                # FastAPI webhook endpoint
+├── evolution_api.py      # Functions for sending messages via EvolutionAPI
+├── chains.py             # Agent logic (OpenAI/LangChain)
+├── message_buffer.py     # Message buffering and debouncing
+├── prompts.py            # Customizable prompts
+├── config.py             # Loads .env variables
 ├── requirements.txt
 ├── docker-compose.yml
 ├── Dockerfile
-├── rag_files/            # Documentos para RAG
+├── rag_files/            # RAG documents
 └── ...
 ```
 
 ---
 
-## 💡 Personalização
+## 💡 Customization
 
-- Modifique os prompts no `.env` para alterar o “tom” e o papel do bot
-- Adicione documentos em `rag_files/` para que o bot utilize como base de conhecimento
-- Adapte o código para novas integrações, fluxos e comportamentos
-
----
-
-## 🏁 Dicas
-
-- Use o Docker para evitar problemas de dependências!
-- Para ambiente de produção, troque as URLs da EvolutionAPI e garanta a segurança do seu webhook.
-- Consulte o [painel EvolutionAPI](https://doc.evolution-api.com/) para mais opções.
+- Modify the prompts in `.env` to change the bot’s “personality” and role
+- Add documents to `rag_files/` for use as a knowledge base
+- Adapt the code for new integrations, workflows, or behaviors
 
 ---
 
-## 🤝 Contribuição
+## 🏁 Tips
 
-Achou útil? Tem dúvidas ou sugestões?  
-Abra uma issue ou envie um pull request!  
-Vamos construir juntos bots mais inteligentes! 🚀
-
----
-
+- Use Docker to avoid dependency issues!
+- For production, update the EvolutionAPI URLs and secure your webhook.
+- Check the [EvolutionAPI dashboard](https://doc.evolution-api.com/) for more options.
