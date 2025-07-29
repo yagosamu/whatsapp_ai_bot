@@ -3,7 +3,7 @@
 An intelligent WhatsApp chatbot powered by **OpenAI**, **FastAPI**, **LangChain**, and **EvolutionAPI**—designed with a production-ready architecture using **Docker**!  
 Perfect for building automated assistants, customer support bots, or implementing RAG (Retrieval-Augmented Generation) with your documents.
 
-![Project Screenshot](images/Whatsapp_bot.png)
+![Project Screenshot](assets/Whatsapp_bot.png)
 ---
 
 ## ✨ Features
